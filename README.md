@@ -4,6 +4,8 @@ This repository is a good React and Express application.
 
 **Fork** this repo on GhitHub (please save as a **private repo**)
 
+All code should be published to any publicly available repository like Github. There should be readme file in the root directory with instructions on how to clone and run the project locally.
+
 When you're finished, please share with @vjaykumar-v
 
 <br />
