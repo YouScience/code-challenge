@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Spinner from "../spinner/spinner";
 import { Status, data } from "./sampleData";
-import chevronDown from "../../assets/image/chevronDown.png";
 import type { ListModel } from "./sampleData";
+import Drawer from "./drawer";
 
 import "./customList.css";
-import Drawer from "./drawer";
 
 export function CustomList() {
   const [listData, setListData] = useState<ListModel[]>([]);
@@ -30,13 +29,35 @@ export function CustomList() {
     });
   }
 
+  function removeItem(
+    event: React.MouseEvent<HTMLParagraphElement, MouseEvent>,
+    item: ListModel
+  ) {
+    event.stopPropagation();
+
+    if (item.id === selectedItem?.id) setSelectedItem(null);
+
+    setListData((prevState) => {
+      return prevState.filter((data) => data.id !== item.id);
+    });
+  }
+
   const listItems = () =>
     listData.map((item, index) => {
       return (
-        <li key={item.id}>
-          <h2 className="listItemHeader" onClick={(_) => accordOnClick(item)}>
-            {item.name}
-          </h2>
+        <li
+          key={item.id}
+          className="listItems"
+          onClick={(_) => accordOnClick(item)}
+        >
+          <h3 className="listItemHeader">{item.name}</h3>
+          <p
+            className="deleteIcon"
+            title="Remove Item"
+            onClick={(event) => removeItem(event, item)}
+          >
+            X
+          </p>
         </li>
       );
     });
