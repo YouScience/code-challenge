@@ -1,0 +1,107 @@
+#drawerSection {
+    position: fixed;
+    top: 64px;
+    right: 0;
+    height: calc(100% - 64px);
+    width: 300px;
+    padding: 16px 8px;
+    background-color: aliceblue;
+    box-shadow: 0px 0px 8px grey;
+}
+
+#drawerForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+#drawerInputSection {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
+
+#drawerUserName, #drawerDescription, #drawerStatusLabel{
+    display: block;
+    margin-bottom: 8px;
+}
+
+#description {
+    resize: none;
+}
+
+#userName, #description {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid wheat;
+}
+
+#userName:focus, #description:focus {
+    border: 1px solid darkgoldenrod;
+    outline: none;
+}
+
+#drawerCheckboxLabel {
+    padding-left: 4px;
+}
+
+#viewed , .statusRadioButtons {
+    accent-color: darkgoldenrod;
+}
+
+#viewedContainer, .drawerRadioButtonContainer{
+    width: fit-content;
+    user-select: none;
+}
+
+#viewedContainer:hover > *, .drawerRadioButtonContainer > * {
+    cursor: pointer;
+}
+
+.formHeaderLabels {
+    font-weight: bold;
+}
+
+#drawerSaveButton {
+    color: brown;
+    padding: 8px;
+    background-color: rgb(233, 150, 122, 0.8);
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid brown;
+    border-radius: 8px;
+}
+
+#drawerSaveButton:hover, #drawerCloseButton:hover{
+    cursor: pointer;
+    box-shadow: 4px 4px 8px grey;
+}
+
+#drawerSaveButton:active, #drawerCloseButton:active {
+    cursor: pointer;
+    box-shadow: 0px 0px 8px grey inset;
+}
+
+#drawerCloseButton {
+    width:fit-content;
+    margin-left: auto;
+    padding: 8px;
+    color: white;
+    user-select: none;
+    background-color: salmon;
+    border-radius: 6px;
+    box-shadow: 2px 2px 8px grey;
+}
+
+.drawerRadioGroup.readOnly {
+    pointer-events: none;
+}
+
+.drawerRadioGroup.readOnly > #drawerStatusLabel::after {
+    content: " - Not Editable";
+    color: red;
+    font-size: 14px;
+    font-style: italic;
+    letter-spacing: 0.5px;
+}

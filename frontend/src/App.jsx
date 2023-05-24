@@ -9,7 +9,7 @@ export default function App() {
       <AppBar
         position='fixed'
         style={{
-          backgroundColor: 'blue',
+          backgroundColor: '#0000ff9c',
         }}
       >
         <Toolbar>

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Spinner from "../spinner/spinner";
 import { Status, data } from "./sampleData";
 import type { ListModel } from "./sampleData";
-import Drawer from "./drawer";
+import Drawer from "../Drawer/drawer";
+import {DeleteOutline, Edit} from '@mui/icons-material';
 
 import "./customList.css";
 
@@ -42,26 +43,6 @@ export function CustomList() {
     });
   }
 
-  const listItems = () =>
-    listData.map((item, index) => {
-      return (
-        <li
-          key={item.id}
-          className="listItems"
-          onClick={(_) => accordOnClick(item)}
-        >
-          <h3 className="listItemHeader">{item.name}</h3>
-          <p
-            className="deleteIcon"
-            title="Remove Item"
-            onClick={(event) => removeItem(event, item)}
-          >
-            X
-          </p>
-        </li>
-      );
-    });
-
   useEffect(() => {
     setIsLoading(true);
 
@@ -71,12 +52,40 @@ export function CustomList() {
     }, 2000);
   }, []);
 
+  const listItems = useMemo(
+    () =>
+      listData.map((item) => {
+        return (
+          <li key={item.id} className="listItems">
+            <h3 className="listItemHeader">{item.name}</h3>
+            <div className="listIconGroup">
+              <p
+                className="editIcon"
+                title="Edit Item"
+                onClick={(event) => accordOnClick(item)}
+              >
+                {<Edit/>}
+              </p>
+              <p
+                className="deleteIcon"
+                title="Remove Item"
+                onClick={(event) => removeItem(event, item)}
+              >
+                {<DeleteOutline/>}
+              </p>
+            </div>
+          </li>
+        );
+      }),
+    [listData]
+  );
+
   return isLoading ? (
     <Spinner />
   ) : (
     <section className="custom-list-section">
       <ul className="list-header">
-        {listItems()}
+        {listItems}
         <li>
           <input
             type="button"
@@ -86,7 +95,13 @@ export function CustomList() {
           />
         </li>
       </ul>
-      {selectedItem && <Drawer item={selectedItem} setListData={setListData} />}
+      {selectedItem && (
+        <Drawer
+          item={selectedItem}
+          setListData={setListData}
+          setSelectedItem={setSelectedItem}
+        />
+      )}
     </section>
   );
 }

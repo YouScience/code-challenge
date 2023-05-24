@@ -8,9 +8,7 @@ body {
 
 #root {
   min-height: 100vh;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  grid-template-columns: 100%;
+  background-color: #bfcfdc61;
 }
 
 a {
