@@ -4,9 +4,10 @@
     right: 0;
     height: calc(100% - 64px);
     width: 300px;
-    padding: 16px 8px;
+    padding: 16px;
     background-color: aliceblue;
     box-shadow: 0px 0px 8px grey;
+    overflow: auto;
 }
 
 #drawerForm{
@@ -65,6 +66,7 @@
 
 #drawerSaveButton {
     color: brown;
+    margin: 16px 0;
     padding: 8px;
     background-color: rgb(233, 150, 122, 0.8);
     font-size: 16px;
@@ -104,4 +106,19 @@
     font-size: 14px;
     font-style: italic;
     letter-spacing: 0.5px;
+}
+
+.drawerErrorLabel {
+    color: red;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 600px)  {
+    #drawerSection {
+        width: 100%;
+        top: 56px;
+        height: calc(100% - 56px);
+    }
 }

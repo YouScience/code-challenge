@@ -18,6 +18,14 @@ const Drawer = (props: DrawerProps) => {
   function accordOnSave(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
+    if (
+      (item?.name.length ?? 0) > 32 ||
+      (item?.description.length ?? 0) > 100
+    ) {
+      alert("Kindly clear all errors before saving");
+      return;
+    }
+
     setListData((prevState) => {
       let newList: ListModel[] = [];
       if (item?.id === "new") {
@@ -65,12 +73,19 @@ const Drawer = (props: DrawerProps) => {
               type="text"
               id="userName"
               value={item?.name}
+              required={true}
+              autoFocus={true}
               onChange={(e) =>
                 setItem((prevState) => {
                   return { ...prevState!, name: e.target.value };
                 })
               }
             />
+            {(item?.name.length ?? 0) > 32 && (
+              <p className="drawerErrorLabel">
+                * Name should should not exceed 32 characters
+              </p>
+            )}
           </div>
 
           <div id="viewedContainer">
@@ -111,6 +126,11 @@ const Drawer = (props: DrawerProps) => {
                 })
               }
             />
+            {(item?.description.length ?? 0) > 100 && (
+              <p className="drawerErrorLabel">
+                * Description should should not exceed 100 characters
+              </p>
+            )}
           </div>
 
           <div
