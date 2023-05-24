@@ -4,7 +4,7 @@ module.exports = {
       presets: [['@babel/preset-react', { development: true }]],
     },
   },
-  presets: ['@babel/preset-env', '@babel/preset-react'],
+  presets: ['@babel/preset-env', '@babel/typescript' , '@babel/preset-react'],
   plugins: [
     [
       'babel-plugin-direct-import',

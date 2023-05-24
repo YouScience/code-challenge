@@ -5,7 +5,7 @@ import { CustomList } from './Components/CustomList';
 
 export default function App() {
   return (
-    <div>
+    <>
       <AppBar
         position='fixed'
         style={{
@@ -19,6 +19,6 @@ export default function App() {
         </Toolbar>
       </AppBar>
       <CustomList />
-    </div>
+    </>
   );
 }

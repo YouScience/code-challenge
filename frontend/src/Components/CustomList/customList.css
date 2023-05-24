@@ -1,0 +1,21 @@
+.custom-list-section {
+    margin: 64px 16px 0px;
+}
+
+.list-header{
+    list-style: none;
+    padding: 0px;
+}
+
+.listItemHeader {
+    background-color: antiquewhite;
+}
+
+.listItemHeader:hover {
+    cursor: pointer;
+}
+
+#addNewButton {
+    width: 100%;
+    background-color: antiquewhite;
+}
