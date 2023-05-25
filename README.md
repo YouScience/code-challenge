@@ -7,6 +7,7 @@ Pre-requisite :
 - Make sure nodejs is installed in the machine
 - Link to download [nodejs](https://nodejs.org/en/download)
 
+
 Procedure :
 - Clone the repo.
 - Open the terminal and run the following commands
@@ -19,6 +20,9 @@ Procedure :
     - npm start
 
 Now the app will be loaded in default browser.
+
+[Frontend status](frontend/README.md)
+[Backend status](backend/README.md)
 
 ------------------------------------------------------------------
 

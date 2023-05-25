@@ -8,9 +8,12 @@
     - POST /item – create an item
     - PUT /item – update an item
     - DELETE /item/:name – remove an item
-- Added the following dependencies
+- Used the following dependencies
     - express (for routing purpose)
     - uuid (for generation unique id for each list item)
+    - nodemon (for Auto hot refresh)
+    - ts-node (to run typescript)
+    - cors (to allow cross-origin-access)
 
 ------------------------------------------------------------------
 

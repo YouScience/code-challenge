@@ -6,6 +6,11 @@
 - Completed all 7 tasks with all the Bonus (Backend intergration).
 - Completed using standarded HTML input elemnts. (No UI libraries used)
 
+Addition key points :
+- Developed for both desktop and mobile friendly.
+- Configured and used typescript.
+- API error handlings done.
+- Used axios for API requests.
 ------------------------------------------------------------------
 
 Complete as many items as you can within a reason. If you get stuck, move onto the next item and circle back if needed. There are a few outstanding issues and/or failure to follow best practices with React/Typescript. You can choose to address these first or as you go along.
