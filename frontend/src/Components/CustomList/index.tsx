@@ -40,33 +40,34 @@ export function CustomList() {
 
     setSelectedItem(null);
 
-    try {
-      const payload = { listItems: listData };
+    const payload = { listItems: listData };
 
-      axios
-        .delete(`http://localhost:8000/item/${item.id}`, { data: payload })
-        .then((response) => {
-          setListData(response.data);
-          setIsLoading(false);
-        });
-    } catch (e) {
-      console.log(e);
-      setIsLoading(false);
-    }
+    axios
+      .delete(`http://localhost:8000/item/${item.id}`, { data: payload })
+      .then((response) => {
+        setListData(response.data);
+        setIsLoading(false);
+      })
+      .catch((e) => {
+          console.log(e);
+          alert("Operation Failed");
+        })
+      .finally(() => setIsLoading(false));
   }
 
   useEffect(() => {
     setIsLoading(true);
 
-    try {
-      axios.get("http://localhost:8000/list").then((response) => {
+    axios
+      .get("http://localhost:8000/list")
+      .then((response) => {
         setListData(response.data);
-        setIsLoading(false);
-      });
-    } catch (e) {
-      console.log(e);
-      setIsLoading(false);
-    }
+      })
+      .catch((e) => {
+          console.log(e);
+          alert("Operation Failed");
+        })
+      .finally(() => setIsLoading(false));
   }, []);
 
   /*To render List of items.
@@ -104,9 +105,13 @@ export function CustomList() {
       {isLoading && <Spinner />}
       <section className="customListSection">
         <ul className="listHeader">
-          {listItems.length > 0 ? listItems : <div className="noDataContainer">
+          {listItems.length > 0 ? (
+            listItems
+          ) : (
+            <div className="noDataContainer">
               <h4 className="noDataLabel">No Data Found</h4>
-            </div>}
+            </div>
+          )}
           <li>
             <input
               type="button"

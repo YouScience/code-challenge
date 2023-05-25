@@ -36,30 +36,28 @@ const Drawer = (props: DrawerProps) => {
 
     if (item?.id === "new") {
       //Add new Item.
-      try {
-        axios
-          .post(`http://localhost:8000/item/${item?.id}`, payload)
-          .then((response) => {
-            setListData(response.data);
-            setIsLoading(false);
-          });
-      } catch (e) {
-        console.log(e);
-        setIsLoading(false);
-      }
+      axios
+        .post(`http://localhost:8000/item/${item?.id}`, payload)
+        .then((response) => {
+          setListData(response.data);
+        })
+        .catch((e) => {
+          console.log(e);
+          alert("Operation Failed");
+        })
+        .finally(() => setIsLoading(false));
     } else {
       //Update existing item.
-      try {
-        axios
-          .put(`http://localhost:8000/item/${item?.id}`, payload)
-          .then((response) => {
-            setListData(response.data);
-            setIsLoading(false);
-          });
-      } catch (e) {
-        console.log(e);
-        setIsLoading(false);
-      }
+      axios
+        .put(`http://localhost:8000/item/${item?.id}`, payload)
+        .then((response) => {
+          setListData(response.data);
+        })
+        .catch((e) => {
+          console.log(e);
+          alert("Operation Failed");
+        })
+        .finally(() => setIsLoading(false));
     }
 
     setSelectedItem(null);
