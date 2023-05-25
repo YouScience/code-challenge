@@ -1,5 +1,19 @@
 # BACK END INSTRUCTIONS
 
+-----------------------------------------------------------------
+## Complettion status (Author: Venubalan T)
+
+- Completed the following requests.
+    - GET /list – return a list of all the item names and their status (Initial hard-coded value)
+    - POST /item – create an item
+    - PUT /item – update an item
+    - DELETE /item/:name – remove an item
+- Added the following dependencies
+    - express (for routing purpose)
+    - uuid (for generation unique id for each list item)
+
+------------------------------------------------------------------
+
 The basic functionality of this API is to render a list of specified data, along with the ability to display the details of any one of these row items, create an item, remove an item, and update an item.
 
 Each list item can have the following properties:

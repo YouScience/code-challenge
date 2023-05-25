@@ -8,15 +8,15 @@ Pre-requisite :
 - Link to download [nodejs](https://nodejs.org/en/download)
 
 Procedure :
-Step 1 : Clone the repo.
-Step 2 : Open the terminal and run the following commands
-            - cd backend
-            - npm install
-            - npm run serve
-step 3 : Open a new terminal and run the following commands
-            - cd frontend
-            - npm install
-            - npm start
+- Clone the repo.
+- Open the terminal and run the following commands
+    - cd backend
+    - npm install
+    - npm run serve
+- Open a new terminal and run the following commands
+    - cd frontend
+    - npm install
+    - npm start
 
 Now the app will be loaded in default browser.
 

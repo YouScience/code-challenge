@@ -1,5 +1,13 @@
 # FRONT END INSTRUCTIONS
 
+-----------------------------------------------------------------
+## Complettion status (Author: Venubalan T)
+
+- Completed all 7 tasks with all the Bonus (Backend intergration).
+- Completed using standarded HTML input elemnts. (No UI libraries used)
+
+------------------------------------------------------------------
+
 Complete as many items as you can within a reason. If you get stuck, move onto the next item and circle back if needed. There are a few outstanding issues and/or failure to follow best practices with React/Typescript. You can choose to address these first or as you go along.
 
 The basic functionality of this application is to render a list/table of specified data with the ability to display the details of any one of these row items dynamically in a drawer. When a row is selected, drawer should open and display the selected row values in the appropriate input. The Drawer should be closed initially and open when a row is selected. If you have testing experience, please implement at least one expectation on a component of your choice. Listed below are some specifics that can be completed in ANY order you choose.
