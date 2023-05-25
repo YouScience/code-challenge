@@ -16,6 +16,7 @@
     "@mui/utils": "^5.9.3",
     "@popperjs/core": "^2.11.6",
     "aws-amplify": "^4.3.26",
+    "axios": "^1.4.0",
     "babel-loader": "^8.2.5",
     "copy-webpack-plugin": "^11.0.0",
     "css-minimizer-webpack-plugin": "^4.0.0",

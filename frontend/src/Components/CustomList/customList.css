@@ -1,10 +1,10 @@
-.custom-list-section {
+.customListSection {
     max-width: 800px;
     margin: 0 auto;
     padding: 64px 16px 0px;    
 }
 
-.list-header{
+.listHeader{
     list-style: none;
     padding: 0px;
 }
@@ -27,7 +27,7 @@
 
 #addNewButton:active {
     cursor: pointer;
-    box-shadow: 0px 0px 20px grey inset;
+    box-shadow: 0px 0px 20px whitesmoke inset;
 }
 
 .listItems {
@@ -44,6 +44,10 @@
     margin: 0;
     font-size: 22px;
     letter-spacing: 1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
 }
 
 .editIcon {
@@ -70,4 +74,17 @@
 
 .listIconGroup {
     display: flex;
-  }
+}
+
+.noDataContainer {
+    height: 20vh;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 0.1px;
+    background-color: wheat;
+    border-radius: 20px;
+}

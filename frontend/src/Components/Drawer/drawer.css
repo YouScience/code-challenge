@@ -75,14 +75,19 @@
     border-radius: 8px;
 }
 
-#drawerSaveButton:hover, #drawerCloseButton:hover{
+#drawerSaveButton:hover{
     cursor: pointer;
     box-shadow: 4px 4px 8px grey;
 }
 
+#drawerCloseButton:hover{
+    cursor: pointer;
+    box-shadow: 4px 4px 8px black;
+}
+
 #drawerSaveButton:active, #drawerCloseButton:active {
     cursor: pointer;
-    box-shadow: 0px 0px 8px grey inset;
+    box-shadow: 0px 0px 8px whitesmoke inset;
 }
 
 #drawerCloseButton {
@@ -93,7 +98,8 @@
     user-select: none;
     background-color: salmon;
     border-radius: 6px;
-    box-shadow: 2px 2px 8px grey;
+    /* box-shadow: 2px 2px 8px grey; */
+    box-shadow: 4px 4px 8px grey;
 }
 
 .drawerRadioGroup.readOnly {

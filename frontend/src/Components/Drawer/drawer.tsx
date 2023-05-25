@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { ListModel, Status } from "../CustomList/sampleData";
-import { v4 as uuid } from "uuid";
+import { ListModel, Status } from "../CustomList/customListModel";
 
 import "./drawer.css";
+import axios from "axios";
 
 type DrawerProps = {
   item: ListModel;
+  listData: ListModel[];
   setListData: React.Dispatch<React.SetStateAction<ListModel[]>>;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   setSelectedItem: React.Dispatch<React.SetStateAction<ListModel | null>>;
 };
 
 const Drawer = (props: DrawerProps) => {
-  const { setListData, setSelectedItem } = props;
+  const { listData, setListData, setIsLoading, setSelectedItem } = props;
 
   const [item, setItem] = useState<ListModel>();
 
-  function accordOnSave(event: React.FormEvent<HTMLFormElement>) {
+  function onSave(event: React.FormEvent<HTMLFormElement>) {
+    //To prevent default form submit action.
     event.preventDefault();
 
+    //Validations before update / insert.
     if (
       (item?.name.length ?? 0) > 32 ||
       (item?.description.length ?? 0) > 100
@@ -26,19 +30,37 @@ const Drawer = (props: DrawerProps) => {
       return;
     }
 
-    setListData((prevState) => {
-      let newList: ListModel[] = [];
-      if (item?.id === "new") {
-        newList = [...prevState, { ...item, id: uuid() }];
-      } else {
-        newList = prevState.map((data) => {
-          if (data.id === item?.id) return item;
-          else return data;
-        });
-      }
+    const payload = { listItems: listData, itemData: item };
 
-      return newList;
-    });
+    setIsLoading(true);
+
+    if (item?.id === "new") {
+      //Add new Item.
+      try {
+        axios
+          .post(`http://localhost:8000/item/${item?.id}`, payload)
+          .then((response) => {
+            setListData(response.data);
+            setIsLoading(false);
+          });
+      } catch (e) {
+        console.log(e);
+        setIsLoading(false);
+      }
+    } else {
+      //Update existing item.
+      try {
+        axios
+          .put(`http://localhost:8000/item/${item?.id}`, payload)
+          .then((response) => {
+            setListData(response.data);
+            setIsLoading(false);
+          });
+      } catch (e) {
+        console.log(e);
+        setIsLoading(false);
+      }
+    }
 
     setSelectedItem(null);
   }
@@ -55,7 +77,7 @@ const Drawer = (props: DrawerProps) => {
 
   return (
     <section key={item?.id} id="drawerSection">
-      <form onSubmit={(event) => accordOnSave(event)} id="drawerForm">
+      <form onSubmit={(event) => onSave(event)} id="drawerForm">
         <div id="drawerInputSection">
           <div id="drawerCloseButton" onClick={(_) => setSelectedItem(null)}>
             X

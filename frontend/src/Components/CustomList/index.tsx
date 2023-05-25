@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useMemo } from "react";
+import axios from "axios";
 import Spinner from "../spinner/spinner";
-import { Status, data } from "./sampleData";
-import type { ListModel } from "./sampleData";
+import { Status } from "./customListModel";
+import type { ListModel } from "./customListModel";
 import Drawer from "../Drawer/drawer";
-import {DeleteOutline, Edit} from '@mui/icons-material';
+import { DeleteOutline, Edit } from "@mui/icons-material";
 
 import "./customList.css";
 
@@ -12,7 +13,7 @@ export function CustomList() {
   const [selectedItem, setSelectedItem] = useState<ListModel | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  function accordOnClick(item: ListModel) {
+  function editItem(item: ListModel) {
     if (selectedItem?.id === item.id) {
       setSelectedItem(null);
     } else {
@@ -35,23 +36,41 @@ export function CustomList() {
     item: ListModel
   ) {
     event.stopPropagation();
+    setIsLoading(true);
 
-    if (item.id === selectedItem?.id) setSelectedItem(null);
+    setSelectedItem(null);
 
-    setListData((prevState) => {
-      return prevState.filter((data) => data.id !== item.id);
-    });
+    try {
+      const payload = { listItems: listData };
+
+      axios
+        .delete(`http://localhost:8000/item/${item.id}`, { data: payload })
+        .then((response) => {
+          setListData(response.data);
+          setIsLoading(false);
+        });
+    } catch (e) {
+      console.log(e);
+      setIsLoading(false);
+    }
   }
 
   useEffect(() => {
     setIsLoading(true);
 
-    setTimeout(() => {
-      setListData(data);
+    try {
+      axios.get("http://localhost:8000/list").then((response) => {
+        setListData(response.data);
+        setIsLoading(false);
+      });
+    } catch (e) {
+      console.log(e);
       setIsLoading(false);
-    }, 2000);
+    }
   }, []);
 
+  /*To render List of items.
+    Only re-renders when listData is changed.*/
   const listItems = useMemo(
     () =>
       listData.map((item) => {
@@ -62,16 +81,16 @@ export function CustomList() {
               <p
                 className="editIcon"
                 title="Edit Item"
-                onClick={(event) => accordOnClick(item)}
+                onClick={(event) => editItem(item)}
               >
-                {<Edit/>}
+                {<Edit />}
               </p>
               <p
                 className="deleteIcon"
                 title="Remove Item"
                 onClick={(event) => removeItem(event, item)}
               >
-                {<DeleteOutline/>}
+                {<DeleteOutline />}
               </p>
             </div>
           </li>
@@ -80,28 +99,33 @@ export function CustomList() {
     [listData]
   );
 
-  return isLoading ? (
-    <Spinner />
-  ) : (
-    <section className="custom-list-section">
-      <ul className="list-header">
-        {listItems}
-        <li>
-          <input
-            type="button"
-            value="Add New"
-            id="addNewButton"
-            onClick={addNewItem}
+  return (
+    <>
+      {isLoading && <Spinner />}
+      <section className="customListSection">
+        <ul className="listHeader">
+          {listItems.length > 0 ? listItems : <div className="noDataContainer">
+              <h4 className="noDataLabel">No Data Found</h4>
+            </div>}
+          <li>
+            <input
+              type="button"
+              value="Add New"
+              id="addNewButton"
+              onClick={addNewItem}
+            />
+          </li>
+        </ul>
+        {selectedItem && (
+          <Drawer
+            item={selectedItem}
+            listData={listData}
+            setListData={setListData}
+            setIsLoading={setIsLoading}
+            setSelectedItem={setSelectedItem}
           />
-        </li>
-      </ul>
-      {selectedItem && (
-        <Drawer
-          item={selectedItem}
-          setListData={setListData}
-          setSelectedItem={setSelectedItem}
-        />
-      )}
-    </section>
+        )}
+      </section>
+    </>
   );
 }
