@@ -6,5 +6,8 @@
   "repository": "https://github.com/YouScience/code-challenge",
   "author": "Brandon Allred <brandon.allred@youscience.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "react-loading": "^2.0.3"
+  }
 }
