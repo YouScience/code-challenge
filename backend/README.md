@@ -1,31 +1,53 @@
-# BACK END INSTRUCTIONS
+# Backend API
 
-The basic functionality of this API is to render a list of specified data, along with the ability to display the details of any one of these row items, create an item, remove an item, and update an item.
+This is a RESTful API built with Node.js and Express to handle item management.
 
-Each list item can have the following properties:
+## Installation
 
-            name: string (Required and Unique)
-            description: string (Optional)
-            status: string (Required) 
-                        Allowed values: New, Complete, In Progress
+1. Clone the repository to your local machine:
 
-Build a REST API with Node.js and Express to handle the following endpoints:
+https://github.com/Divyarani3020/code-challenge.git
 
-            GET /list – return a list of all the item names and their status
+2. Navigate to the project directory:
 
-            GET /item/:name – return all fields for a specific item
+cd backend
 
-            POST /item – create an item
+3. Install the dependencies:
 
-            PUT /item – update an item
+npm i
 
-            DELETE /item/:name – remove an item
+## Usage
 
-You can store the data any way you want, it does not need to persist if you restart the server. The unique name is the id that distinguishes one item from another.
+1. Start the server:
 
-You can use Typescript if you wish.
+npm run dev
 
-All code should be published to any publicly available repository like Github. There should be readme file in the root directory with instructions on how to clone and run the project locally.
+2. The server will start running on `http://localhost:3000`.
 
-Because there is no front end, you can use Postman to test and view your endpoints.
-Don’t spend too much time doing this exercise, we just want to see what your level of coding experience is in creating API’s so we can determine a best fit for you.
+## API Endpoints
+
+The following API endpoints are available:
+
+- GET `/list`: Returns a list of all item names and their status.
+
+- GET `/item/:id`: Returns all fields for a specific item.
+
+- POST `/item`: Creates a new item.
+
+- PUT `/item/:id`: Updates an existing item.
+
+- DELETE `/item/:id`: Removes an item.
+
+### Item Structure
+
+Each item has the following properties:
+
+- `name`: string (Required and Unique)
+- `description`: string (Optional)
+- `status`: string (Required)
+- `viewed` : boolean (Required)
+- Allowed values: "new" | "complete" | "in progress" | "on hold" | "archived";
+
+## Data Storage
+
+The data is stored in memory and does not persist if you restart the server. The unique `id` property serves as the identifier for each item.
