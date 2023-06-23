@@ -54,4 +54,4 @@ The data is stored in memory and does not persist if you restart the server. The
 
 ## License
 
-This project is licensed under the [MIT License](code-challenge/LICENSE).
+This project is licensed under the [MIT License](LICENSE).
