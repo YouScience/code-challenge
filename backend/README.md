@@ -51,3 +51,7 @@ Each item has the following properties:
 ## Data Storage
 
 The data is stored in memory and does not persist if you restart the server. The unique `id` property serves as the identifier for each item.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
