@@ -1,0 +1,22 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# idea
+.idea
+.vscode
+
+# misc
+.DS_Store
+.env.development
+.env.production
+
+npm-debug.log*
+dist
